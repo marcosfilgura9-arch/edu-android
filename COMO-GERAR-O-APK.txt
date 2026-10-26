@@ -1,0 +1,68 @@
+============================================================
+   EDU — app de Android (gerar o APK na nuvem, de graça)
+============================================================
+
+Você não precisa instalar nada no PC. O GitHub compila o APK pra você.
+
+PASSO A PASSO
+-------------
+1. Crie uma conta gratuita em github.com (se ainda não tiver).
+
+2. Crie um repositório novo (botão "New"):
+   - nome: edu-app (ou o que quiser)
+   - pode deixar "Private" (particular). Tanto faz.
+
+3. Envie TODA esta pasta (edu-android) para o repositório:
+   - jeito fácil, pelo navegador: no repositório, clique em
+     "Add file" > "Upload files", arraste TUDO que está dentro
+     da pasta edu-android (inclusive a pasta .github) e confirme
+     ("Commit changes").
+   - IMPORTANTE: mande o CONTEÚDO da pasta edu-android (os arquivos
+     settings.gradle, build.gradle, a pasta app, a pasta .github...),
+     não a pasta edu-android dentro de outra pasta.
+
+4. O GitHub começa a compilar sozinho. Abra a aba "Actions" do
+   repositório e espere o trabalho "Montar o APK do Edu" ficar verde
+   (uns 3 a 6 minutos na primeira vez).
+
+5. Clique nesse trabalho concluído, role até "Artifacts" embaixo e
+   baixe "Edu-apk". Dentro vem o arquivo app-debug.apk.
+
+6. Passe o app-debug.apk para o celular (por e-mail, WhatsApp web,
+   cabo, Google Drive...) e toque nele para instalar.
+   - O Android vai pedir para permitir "instalar apps desconhecidos":
+     aceite (é porque o app não veio da Play Store).
+
+7. Abra o Edu. Na primeira vez ele pede algumas permissões —
+   aceite todas para ele funcionar:
+   - Microfone (ouvir você)
+   - Telefone / chamadas (atender e desligar ligação)
+   - Notificações (o aviso da escuta)
+   - Bluetooth (brinquedo compatível)
+
+PRONTO
+------
+O Edu abre de corpo inteiro, esperando. Diga "Edu" e o pedido, ou
+ligue o modo conversa. Agora, como app de verdade, ele também:
+  - atende e desliga ligação por voz
+  - fica escutando "Edu" em segundo plano (aviso fixo na barra)
+  - mostra bateria e memória de verdade
+  - abre seus apps
+
+ATUALIZAR DEPOIS
+----------------
+Quando eu mexer no Edu, você troca os arquivos no repositório
+(Upload files de novo) e o GitHub gera um APK novo. É só baixar
+e instalar por cima.
+
+OBSERVAÇÕES HONESTAS
+--------------------
+- A escuta sempre ligada ("Edu") usa o reconhecedor do Google e gasta
+  bateria; não é perfeita. Depois dá para trocar por um motor de palavra
+  de ativação dedicado, se você quiser.
+- Atender/desligar ligação funciona a partir do Android 8 (desligar, do
+  Android 9). Em alguns celulares o sistema pede para tornar o Edu o
+  "app de telefone" para o controle total; se pedir, é só aceitar.
+- Este é um APK de teste (debug), perfeito para uso pessoal. Para colocar
+  na Play Store um dia, precisaria de uma assinatura; não é necessário
+  para instalar no seu celular.
