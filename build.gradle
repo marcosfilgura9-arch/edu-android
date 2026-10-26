@@ -1,1 +1,34 @@
-// projeto raiz: nada aqui; a configuracao esta em app/build.gradle
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'com.edu.app'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.edu.app"
+        minSdk 26
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildTypes {
+        debug {
+            minifyEnabled false
+        }
+        release {
+            minifyEnabled false
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+}
+
+dependencies {
+    // tudo o que o Edu usa vem do proprio Android (WebView, voz, telefonia); sem bibliotecas extras
+}

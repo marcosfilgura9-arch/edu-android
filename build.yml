@@ -1,0 +1,52 @@
+name: Montar o APK do Edu
+
+# Roda sozinho quando você envia os arquivos (push) ou aperta "Run workflow" na aba Actions.
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main, master ]
+
+permissions:
+  contents: write   # necessário para publicar o APK na "Release"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Pegar o código
+        uses: actions/checkout@v4
+
+      - name: Preparar o Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Preparar o Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Compilar o APK
+        run: |
+          gradle wrapper --gradle-version 8.7
+          ./gradlew assembleDebug --no-daemon --stacktrace
+
+      # 1) Guarda o APK como "artifact" (download pelo computador, na aba Actions)
+      - name: Guardar o APK (artifact)
+        uses: actions/upload-artifact@v4
+        with:
+          name: Edu-apk
+          path: app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error
+
+      # 2) Publica o APK numa "Release" fixa chamada "latest":
+      #    assim você abre a página de Releases no CELULAR e baixa o Edu.apk direto.
+      - name: Renomear para Edu.apk
+        run: cp app/build/outputs/apk/debug/app-debug.apk Edu.apk
+
+      - name: Publicar o APK na Release "latest"
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: latest
+          name: Edu Android (APK mais recente)
+          body: "APK do Edu pronto para instalar. Baixe o Edu.apk aqui embaixo no seu celular e abra para instalar."
+          files: Edu.apk
